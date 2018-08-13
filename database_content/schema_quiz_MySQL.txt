@@ -11,3 +11,13 @@ CREATE TABLE answers (
  PRIMARY KEY (answer_id), 
  FOREIGN KEY(question_id) REFERENCES questions(question_id)
 );
+
+CREATE TABLE users (
+ user_id smallint unsigned not null auto_increment,
+ username varchar(100) not null,
+ password varchar(100) not null,
+ name varchar(100) not null,
+ surname varchar(100) not null,
+ email varchar(100) not null,
+ PRIMARY KEY (user_id)
+);
