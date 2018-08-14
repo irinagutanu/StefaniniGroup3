@@ -8,10 +8,9 @@ public class User {
 	private String name;
 	private String surname;
 	private String email;
-<<<<<<< HEAD
 	private Integer score;
 	
-	public User(Integer id, String username, String password, String name, String surname, String email, Integer scor) {
+	public User(Integer id, String username, String password, String name, String surname, String email, Integer score) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -20,10 +19,11 @@ public class User {
 		this.email = email;
 		this.score = score;
 	}
-=======
-	private Integer id;
-	private Integer score;
->>>>>>> 4730c8e33d7b42aff557dfa501d74db64364e2fa
+	
+	public User() {
+		
+	}
+
 	
 	public Integer getId() {
 		return id;
