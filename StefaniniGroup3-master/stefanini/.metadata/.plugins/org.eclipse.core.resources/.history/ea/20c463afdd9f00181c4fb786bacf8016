@@ -1,0 +1,5 @@
+package ro.stefanini.data;
+
+public class Quiz {
+
+}

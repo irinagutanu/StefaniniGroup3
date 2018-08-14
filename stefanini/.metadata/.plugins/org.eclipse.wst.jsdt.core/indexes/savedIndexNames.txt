@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\SorinaM\Desktop\STEFANINI\StefaniniGroup3-master\stefanini\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2966367248.index
+1503952901.index
+1665791411.index
+1123609785.index
+1846035029.index
+1857039649.index

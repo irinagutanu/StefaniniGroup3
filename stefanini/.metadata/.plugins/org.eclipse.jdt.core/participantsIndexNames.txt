@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\SorinaM\Desktop\STEFANINI\StefaniniGroup3-master\stefanini\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\551218163.index
+\StefaniniQuizWebApp\src
