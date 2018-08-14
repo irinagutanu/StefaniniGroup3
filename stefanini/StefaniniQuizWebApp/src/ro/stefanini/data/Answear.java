@@ -6,6 +6,12 @@ public class Answear {
 	private String contentAnswear;
 	private Boolean truthValue;
 	
+	public Answear(Integer aid, Integer qid, String answearContent, Boolean truthValue) {
+		this.id = aid;
+		this.questionId = qid;
+		this.contentAnswear = answearContent;
+		this.truthValue = truthValue;
+	}
 	public Integer getId() {
 		return id;
 	}
