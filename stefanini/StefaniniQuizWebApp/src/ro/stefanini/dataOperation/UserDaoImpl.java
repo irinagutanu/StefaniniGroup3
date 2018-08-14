@@ -2,7 +2,10 @@ package ro.stefanini.dataOperation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -11,10 +14,13 @@ import ro.stefanini.data.User;
 
 @Component
 public class UserDaoImpl {
+	
+	private Connection con;
+	private PreparedStatement preparedStatement;
 
 	public void register(User user) {
-		Connection con = DatabaseConnectionFactory.createConnection();
-		PreparedStatement preparedStatement = null;
+		con = DatabaseConnectionFactory.createConnection();
+		preparedStatement = null;
 		try {
 			preparedStatement = con.prepareStatement("insert into users (username, password, name, surname, email) values (?,?,?,?,?)");
 			preparedStatement.setString(1, user.getUsername()); 
@@ -35,6 +41,45 @@ public class UserDaoImpl {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public User getUser(final String name, final String password) {
+		con = DatabaseConnectionFactory.createConnection();
+		preparedStatement = null;
+		ResultSet usersRs = null;
+		User user = null;
+		try {
+			con = DatabaseConnectionFactory.createConnection();
+			con.setAutoCommit(false);
+			preparedStatement = con.prepareStatement("SELECT * FROM Users WHERE name=? AND password = ?");
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, password);
+			usersRs = preparedStatement.executeQuery();
+			user = createUsers(usersRs).get(0);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbUtills.closeQuietly(usersRs);
+			DbUtills.closeQuietly(preparedStatement);
+			DbUtills.closeQuietly(con);
+		}
+		return user;
+	}
+	
+	private List<User> createUsers(ResultSet rs) throws SQLException{
+		List<User> users = new ArrayList<>();
+		while(rs.next()) {
+			Integer userId = rs.getInt("user_id");
+			String username = rs.getString("username");
+			String password = rs.getString("password");
+			String name = rs.getString("name");
+			String surname = rs.getString("surname");
+			String email = rs.getString("email");
+			Integer scor = rs.getInt("scor");
+			users.add(new User(userId,username,password,name,surname,email,scor));
+		}
+		return users;
 	}
 
 }

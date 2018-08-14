@@ -2,11 +2,23 @@ package ro.stefanini.data;
 
 public class User {
 	
+	private Integer id;
 	private String username;
 	private String password;
 	private String name;
 	private String surname;
 	private String email;
+	private Integer score;
+	
+	public User(Integer id, String username, String password, String name, String surname, String email, Integer scor) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.score = score;
+	}
 	
 	public String getUsername() {
 		return username;
