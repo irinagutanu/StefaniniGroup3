@@ -4,8 +4,17 @@ import java.util.*;
 public class Question {
 	private Integer id;
 	private String questionContent;
-	private List<Answear> answears;
+	private Integer countCorrectAnswear;
+	List<Answear> answears;
 	
+	public Integer getCountCorrectAnswear() {
+		return countCorrectAnswear;
+	}
+
+	public void setCountCorrectAnswear(Integer countCorrectAnswear) {
+		this.countCorrectAnswear = countCorrectAnswear;
+	}
+
 	public Question(Integer id, String questionContent, List<Answear> answears) {
 		this.id = id;
 		this.questionContent = questionContent;

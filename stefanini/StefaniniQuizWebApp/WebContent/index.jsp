@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="css/style.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -31,7 +30,10 @@
         </article>
          <footer>
              &copy; 2018 Stefanini Quiz Project &nbsp;<span class="separator">|</span>Desgnied by Virlan Petru
-        </footer>       
+        </footer>
+            
+        
+        
     </div>
 </body>
 </html>
