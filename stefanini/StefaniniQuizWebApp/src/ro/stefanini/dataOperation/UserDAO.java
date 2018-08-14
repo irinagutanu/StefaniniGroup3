@@ -1,4 +1,4 @@
-package ro.stefanini;
+package ro.stefanini.dataOperation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,16 +6,17 @@ import java.sql.SQLException;
 
 import org.springframework.stereotype.Component;
 
-import ro.stefanini.data.DatabaseConnectionFactory;
+import ro.stefanini.dataOperation.DatabaseConnectionFactory;
 import ro.stefanini.data.User;
 
 @Component
-public class UserDaoImpl {
+public class UserDAO {
 
 	public void register(User user) {
 		Connection con = DatabaseConnectionFactory.createConnection();
+		PreparedStatement preparedStatement = null;
 		try {
-			PreparedStatement preparedStatement = con.prepareStatement("insert into users (username, password, name, surname, email) values (?,?,?,?,?)");
+			preparedStatement = con.prepareStatement("insert into users (username, password, name, surname, email) values (?,?,?,?,?)");
 			preparedStatement.setString(1, user.getUsername()); 
 			preparedStatement.setString(2, user.getPassword()); 
 			preparedStatement.setString(3, user.getName()); 
@@ -27,6 +28,9 @@ public class UserDaoImpl {
 		} finally {
 			try {
 				con.close();
+				if(preparedStatement != null) {
+					preparedStatement.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
