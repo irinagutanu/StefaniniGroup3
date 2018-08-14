@@ -4,7 +4,7 @@ import java.util.*;
 public class Question {
 	private Integer id;
 	private String questionContent;
-	List<Answear> answears;
+	private List<Answear> answears;
 	
 	public Question(Integer id, String questionContent, List<Answear> answears) {
 		this.id = id;
