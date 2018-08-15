@@ -36,19 +36,60 @@ public class QuizController {
 		questionsList.setQuestions(questions);
 		mav.addObject("questionsList", questionsList);
 		System.out.println(questionsList.getQuestions().size());
-		for (Question question:questionsList.getQuestions()) 
-			for (Answear answer:question.getAnswers())
+		for (Question question : questionsList.getQuestions())
+			for (Answear answer : question.getAnswers())
 				answer.setValue(false);
-		
+
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/showResult", method = RequestMethod.POST)
 	public String showResult(@ModelAttribute("question") QuestionsList questionsList, Model model) {
-		System.out.println(questionsList.getQuestions().get(0).getAnswers().get(0).getAnswer());
+		System.out.println(questionsList.getQuestions().get(0).getAnswers().get(0).getId());
 		System.out.println(questionsList.getQuestions().get(0).getAnswers().get(0).getValue());
-		System.out.println(questionsList.getQuestions().get(0).getAnswers().get(0).getAnswer());
-		System.out.println(questionsList.getQuestions().get(0).getAnswers().get(0).getValue());
-		return "result";
+		System.out.println(questionsList.getQuestions().get(0).getId());
+		List<Question> questions = questionDao.getQuestions();
+		int score = getScore(questions,questionsList.getQuestions());
+		int numberOfQuestions = questions.size();
+		System.out.println(score);
+		model.addAttribute("score", score);
+		model.addAttribute("numberOfQuestions", numberOfQuestions);
+			return "result";
+		
 	}
+
+	public int getScore(List<Question> userQuestions, List<Question> databaseQuestions) {
+		int count = 0;
+		for (int i = 0; i < userQuestions.size(); i++) {
+			for (int j = 0; j < databaseQuestions.size(); j++) {
+				Question singleUserQuestion = userQuestions.get(i);
+				Question singleDatabaseQuestion = databaseQuestions.get(j);
+				if (singleUserQuestion.equals(singleDatabaseQuestion)) {
+					if (getScore(singleUserQuestion, singleDatabaseQuestion)) {
+						count++;
+					}
+
+				}
+			}
+		}
+
+		return count;
+
+	}
+
+	public boolean getScore(Question userQuestion, Question databaseQuestion) {
+		for (int i = 0; i < userQuestion.getAnswers().size(); i++) {
+			Answear singleUserAnswear = userQuestion.getAnswers().get(i);
+			Answear singleDatabaseAnswear = databaseQuestion.getAnswers().get(i);
+
+			if (!singleUserAnswear.equals(singleDatabaseAnswear)) {
+				return false;
+			}	
+		}
+		return true;
+
+	}
+	
+	
+	
 }

@@ -33,13 +33,16 @@
 				<p>
 					Question :
 					<c:out value="${singleQuestion.questionContent}" />
+					
+					<form:hidden path="questions[${i.index}].id" />
 				</p>
 
 				<c:forEach var="singleAnswer" items="${singleQuestion.answers}"	varStatus="j">
 
-				<!--  TODO value off -->
 					<form:checkbox path="questions[${i.index}].answers[${j.index}].value" />
 
+					<form:hidden path="questions[${i.index}].answers[${j.index}].id" />
+					
 					<c:out value="${singleAnswer.answer}" />
 					<br />
 				</c:forEach>

@@ -63,7 +63,6 @@ public class Question {
 	
 	public Integer findCountCorrectAnswears() {
 		if( this.answears == null) {
-			throw NullPointerException;
 			return -1;
 		}
 		else {
@@ -77,4 +76,25 @@ public class Question {
 			return count;
 		}
 	}
+
+	 @Override
+	    public boolean equals(Object obj) {
+	        if (obj == null) {
+	            return false;
+	        }
+
+	        if (!Question.class.isAssignableFrom(obj.getClass())) {
+	            return false;
+	        }
+
+	        final Question question = (Question) obj;
+	        if ((this.id == null) ? (question.id != null) : !this.id.equals(question.id)) {
+	            return false;
+	        }
+
+	        return true;
+	    }
+	
+
+	
 }

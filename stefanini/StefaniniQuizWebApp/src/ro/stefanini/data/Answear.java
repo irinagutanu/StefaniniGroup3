@@ -41,4 +41,23 @@ public class Answear {
 	public void setValue(Boolean value) {
 		this.truthValue = value;
 	}
+	
+	 @Override
+	    public boolean equals(Object obj) {
+	        if (obj == null) {
+	            return false;
+	        }
+
+	        if (!Answear.class.isAssignableFrom(obj.getClass())) {
+	            return false;
+	        }
+
+	        final Answear answear = (Answear) obj;
+	        if ((this.truthValue == null) ? (answear.truthValue != null) : !this.truthValue.equals(answear.truthValue)) {
+	            return false;
+	        }
+
+	        return true;
+	    }
+	
 }
