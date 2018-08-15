@@ -12,9 +12,13 @@ public class Quiz {
 	private HashMap<Question, List<Answear> > userInput;
 	
 	public Quiz(User us, HashMap<Question, List<Answear> > userInput) {
-		this.user = us;
+		this(us, userInput, new QuestionDAO().getQuestions());
+	}
+	
+	public Quiz(User us, HashMap<Question, List<Answear> > userInput, List<Question> questions) {
+		this.user = user;
 		this.userInput = userInput;
-		dbQuestions = new QuestionDAO().getQuestions();
+		this.dbQuestions = questions;
 	}
 	
 	public User getUser() {

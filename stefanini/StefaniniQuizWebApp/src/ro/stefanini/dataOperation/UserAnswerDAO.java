@@ -64,6 +64,8 @@ public class UserAnswerDAO {
 		}
 		
 		userInput = createQuizMap(questions, forUserInput);
+		
+		quiz = new Quiz(user, userInput, questions);
 		return quiz;
 	}
 	
