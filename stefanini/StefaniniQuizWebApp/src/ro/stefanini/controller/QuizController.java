@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ro.stefanini.data.Answear;
 import ro.stefanini.data.Question;
 import ro.stefanini.data.QuestionsList;
 import ro.stefanini.dataOperation.QuestionDAO;
@@ -35,6 +36,10 @@ public class QuizController {
 		questionsList.setQuestions(questions);
 		mav.addObject("questionsList", questionsList);
 		System.out.println(questionsList.getQuestions().size());
+		for (Question question:questionsList.getQuestions()) 
+			for (Answear answer:question.getAnswers())
+				answer.setValue(false);
+		
 		return mav;
 	}
 	
