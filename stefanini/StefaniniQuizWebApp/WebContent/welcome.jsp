@@ -24,7 +24,7 @@
 	
 	<nav class="menu">
             <a href="index.html">Home</a> &nbsp; &nbsp; &nbsp;
-            <a href="about.html">About Us</a> &nbsp; &nbsp; &nbsp;
+            <a href="about.jsp">About Us</a> &nbsp; &nbsp; &nbsp;
             <a href="logIn.html">Log In</a> &nbsp; &nbsp; &nbsp;
             <a href="signUp.html">Sign Up</a> &nbsp; &nbsp; &nbsp;
         </nav>

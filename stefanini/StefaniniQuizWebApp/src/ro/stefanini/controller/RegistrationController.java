@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ro.stefanini.dataOperation.UserDaoImpl;
+import ro.stefanini.dataOperation.UserDAO;
 import ro.stefanini.data.User;
 
 
@@ -18,7 +18,7 @@ import ro.stefanini.data.User;
 public class RegistrationController {
  
 	@Autowired
-	private UserDaoImpl userDaoImpl;
+	private UserDAO userDaoImpl;
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {

@@ -7,27 +7,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import ro.stefanini.data.Answear;
 import ro.stefanini.data.Question;
 
+@Component
 public class QuestionDAO {
-	private Connection con;
-	private PreparedStatement getQuestionStm;
-	private PreparedStatement getQuestionsStm;
-	private PreparedStatement insertQuestionStm;
-	private PreparedStatement updateQuestionStm;
-	private PreparedStatement deleteQuestionStm;
+	
+	 
 	
 	public Question getQuestion(final Integer questionId) {
 		ResultSet questionRs = null;
 		Question question = null;
+		Connection con = null;
+	    PreparedStatement getQuestionStm = null;
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
-			getQuestionStm = con.prepareStatement("SELECT * FROM Question WHERE question_id=?");
+			getQuestionStm = con.prepareStatement("SELECT * FROM Question WHERE IDQuestion=?");
 			getQuestionStm.setInt(1, questionId);
 			questionRs = getQuestionStm.executeQuery();
-			question = createQuestions(questionRs).get(0);
+			question = createQuestions(questionRs, con).get(0);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -42,12 +43,14 @@ public class QuestionDAO {
 	public List<Question> getQuestions(){
 		ResultSet questionsRs = null;
 		List<Question> questions = null;
+		Connection con = null;
+		PreparedStatement getQuestionsStm = null;
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
 			getQuestionsStm = con.prepareStatement("SELECT * FROM Question");
 			questionsRs = getQuestionsStm.executeQuery();
-			questions = createQuestions(questionsRs);
+			questions = createQuestions(questionsRs, con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -58,12 +61,12 @@ public class QuestionDAO {
 		return questions;
 	}
 	
-	private List<Question> createQuestions(ResultSet rs) throws SQLException {
+	private List<Question> createQuestions(ResultSet rs, Connection con) throws SQLException {
 		List<Question> questions = new ArrayList<>();
 		while(rs.next()) {
-			Integer qid = rs.getInt("question_id");
+			Integer qid = rs.getInt("IDQuestion");
 			String questionContent = rs.getString("question_content"); 
-			List<Answear> answears = new AnswearDAO().getAnswearsByQuestionId(qid);
+			List<Answear> answears = new AnswearDAO().getAnswearsByQuestionId(qid, con);
 			questions.add(new Question(qid, questionContent, answears));
 		}
 		return questions;
@@ -71,6 +74,8 @@ public class QuestionDAO {
 	
 	public int addQuestion(final String questionContent) {
 		int insertedRows = 0;
+		Connection con = null;
+		PreparedStatement insertQuestionStm=null;
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
@@ -89,10 +94,12 @@ public class QuestionDAO {
 	
 	public int updateQuestion(final Integer questionId, final String questionContent) {
 		int updatedRows = 0;
+		Connection con = null;
+		PreparedStatement updateQuestionStm=null;
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
-			updateQuestionStm = con.prepareStatement("UPDATE Question SET question_content=? WHERE question_id=?");
+			updateQuestionStm = con.prepareStatement("UPDATE Question SET question_content=? WHERE IDQuestion=?");
 			updateQuestionStm.setString(1, questionContent);
 			updateQuestionStm.setInt(2, questionId);
 			updatedRows = updateQuestionStm.executeUpdate();
@@ -109,10 +116,12 @@ public class QuestionDAO {
 	
 	public int deleteQuestion(final Integer questionId){
 		int deletedRows = 0;
+		Connection con = null;
+	    PreparedStatement deleteQuestionStm =null;
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
-			deleteQuestionStm = con.prepareStatement("DELETE FROM Question WHERE question_id=?");
+			deleteQuestionStm = con.prepareStatement("DELETE FROM Question WHERE IDQuestion=?");
 			deleteQuestionStm.setInt(1, questionId);
 			deletedRows = deleteQuestionStm.executeUpdate();
 			con.commit();
