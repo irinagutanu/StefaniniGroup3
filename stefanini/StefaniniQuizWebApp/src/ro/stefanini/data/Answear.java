@@ -12,6 +12,7 @@ public class Answear {
 		this.contentAnswear = answearContent;
 		this.truthValue = truthValue;
 	}
+		
 	public Integer getId() {
 		return id;
 	}
@@ -25,13 +26,13 @@ public class Answear {
 		this.questionId = questionId;
 	}
 	
-	public String getAnswear() {
+	public String getAnswer() {
 		return contentAnswear;
 	}
 	public Boolean getValue() {
 		return truthValue;
 	}
-	public void setAnswear(String contentAnswear) {
+	public void setAnswer(String contentAnswear) {
 		this.contentAnswear = contentAnswear;
 	}
 	public void setValue(Boolean value) {

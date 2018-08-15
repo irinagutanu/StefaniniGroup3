@@ -33,7 +33,7 @@ public class Question {
 		this.id = id;
 	}
 	
-	public void setQuestion(String questionContent) {
+	public void setQuestionContent(String questionContent) {
 		this.questionContent = questionContent;
 	}
 	
@@ -46,11 +46,11 @@ public class Question {
 		this.answears.add(answear);
 	}
 	
-	public String getQuestion() {
+	public String getQuestionContent() {
 		return this.questionContent;
 	}
 	
-	public List<Answear> getAnswears() {
+	public List<Answear> getAnswers() {
 		return answears;
 	}
 	

@@ -6,13 +6,12 @@ import java.sql.SQLException;
 
 public class DatabaseConnectionFactory {
 
-	// TODO: de verificat URL-ul dupa ce avem baza de date
-	private static Connection con = null;
-	private static String dbURL = "jdbc:mysql://localhost:3306/quiz";
-	private static String dbUser = "root";
-	private static String dbPassword = "parola123";
+	private static String dbURL = "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7251937";
+	private static String dbUser = "sql7251937";
+	private static String dbPassword = "LCBKBgjWGd";
 
 	public static Connection createConnection() {
+		Connection con = null;
 		try {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
