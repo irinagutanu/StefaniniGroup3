@@ -60,4 +60,21 @@ public class Question {
 	public void setAnswers(List<Answear> answears) {
 		this.answears = answears;
 	}
+	
+	public Integer findCountCorrectAnswears() {
+		if( this.answears == null) {
+			throw NullPointerException;
+			return -1;
+		}
+		else {
+			Integer count = 0;
+			for(Answear ans : answears) {
+				if( ans.getValue()) {
+					count++;
+				}
+			}
+			this.setCountCorrectAnswear(count);
+			return count;
+		}
+	}
 }
