@@ -18,15 +18,14 @@
         <nav class="menu">
             <a href="index.jsp">Home</a> &nbsp; &nbsp; &nbsp;
             <a href="about.jsp">About Us</a> &nbsp; &nbsp; &nbsp;
-            <a href="logIn.jsp">Log In</a> &nbsp; &nbsp; &nbsp;
             <a href="register">Sign Up</a> &nbsp; &nbsp; &nbsp;
-            <a href="showQuiz">Quiz</a> &nbsp; &nbsp; &nbsp;
+        
         </nav>
         <article class="main">
-           <form method="get" action="springWebAppLogIn">
+           <form method="post" action="loginProcess">
                <p>
-                   <label for="name">Name: </label>
-                   <input type="text" name="name" placeholder="Your Name"/>
+                   <label for="username">Username: </label>
+                   <input type="text" name="username" placeholder="Your Username"/>
                </p>
                <p>
                    <label for="password">Password: </label>

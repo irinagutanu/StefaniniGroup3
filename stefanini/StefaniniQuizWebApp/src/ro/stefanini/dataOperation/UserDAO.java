@@ -22,7 +22,7 @@ public class UserDAO {
 		con = DatabaseConnectionFactory.createConnection();
 		preparedStatement = null;
 		try {
-			preparedStatement = con.prepareStatement("insert into UserAccount (username, password, name, surename, email) values (?,?,?,?,?)");
+			preparedStatement = con.prepareStatement("insert into UserAccount (username, password, name, surename, email, scor) values (?,?,?,?,?, 0)");
 			preparedStatement.setString(1, user.getUsername()); 
 			preparedStatement.setString(2, user.getPassword()); 
 			preparedStatement.setString(3, user.getName()); 
@@ -51,11 +51,13 @@ public class UserDAO {
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
-			preparedStatement = con.prepareStatement("SELECT * FROM UserAccount WHERE name=? AND password = ?");
+			preparedStatement = con.prepareStatement("SELECT * FROM UserAccount WHERE username=? AND password = ?");
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, password);
 			usersRs = preparedStatement.executeQuery();
-			user = createUsers(usersRs).get(0);
+			List<User> users = createUsers(usersRs);
+			if (users.size() > 0)
+				user = users.get(0);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -14,9 +14,11 @@
 		<header class="header"> <a class="link-title"
 			href="index.jsp">Stefanini Quiz Project</a> </header>
 
-		<nav class="menu"> <a href="index.jsp">Home</a> &nbsp; &nbsp;
-		&nbsp; <a href="about.jsp">About Us</a> &nbsp; &nbsp; &nbsp; <a
-			href="showQuiz">Quiz</a> &nbsp; &nbsp; &nbsp; </nav>
+		<nav class="menu"> 
+		<a href="index.jsp">Home</a> &nbsp; &nbsp;
+		&nbsp; 
+		<a href="about.jsp">About Us</a> &nbsp; &nbsp; &nbsp; 
+		<a	href="showQuiz">Quiz</a> &nbsp; &nbsp; &nbsp; </nav>
 
 		<article class="main"> <br>
 		<br>

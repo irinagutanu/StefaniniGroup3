@@ -19,8 +19,6 @@
     	<nav class="menu">
             <a href="index.jsp">Home</a> &nbsp; &nbsp; &nbsp;
             <a href="about.jsp">About Us</a> &nbsp; &nbsp; &nbsp;
-            <a href="logIn.jsp">Log In</a> &nbsp; &nbsp; &nbsp;
-            <a href="register">Sign Up</a> &nbsp; &nbsp; &nbsp;
              <a href="showQuiz">Quiz</a> &nbsp; &nbsp; &nbsp;
         </nav>
         
