@@ -5,8 +5,8 @@ Aplicatia ii ofera unui utilizator logat un test de programare si ii returneaza 
 Au fost utilizate: Spring, HTML, CSS, Java 8 si MySQL
 
 Membrii echipa 3:
-  Virlan Petru
-  Diana Mocanu(Fagateanu)
-  Palasaru George
-  Gutanu Irina
+  Virlan Petru,
+  Diana Mocanu(Fagateanu),
+  Palasaru George,
+  Gutanu Irina,
   Zaharia Ion
