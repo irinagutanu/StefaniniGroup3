@@ -9,24 +9,27 @@
 <body>
 
 <body>
+        <header class="header">
+            <a  class="link-title" href="index.jsp">Stefanini Quiz Project</a>
+            
+        </header>
+        
 	<table>
 		<tr>
-			<td>Welcome ${username}</td>
+			<td>Welcome ${username} !</td>
 		</tr>
 		<tr>
 		</tr>
 		<tr>
 		</tr>
 		<tr>
-			<td><a href="index.jsp">Index</a></td>
 		</tr>
 	</table>
 	
 	<nav class="menu">
-            <a href="index.html">Home</a> &nbsp; &nbsp; &nbsp;
+            <a href="index.jsp">Home</a> &nbsp; &nbsp; &nbsp;
             <a href="about.jsp">About Us</a> &nbsp; &nbsp; &nbsp;
-            <a href="logIn.html">Log In</a> &nbsp; &nbsp; &nbsp;
-            <a href="signUp.html">Sign Up</a> &nbsp; &nbsp; &nbsp;
+            <a href="showQuiz">Quiz</a> &nbsp; &nbsp; &nbsp;
         </nav>
 	
 </body>

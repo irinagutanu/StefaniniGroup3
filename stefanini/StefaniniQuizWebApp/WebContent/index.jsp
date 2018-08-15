@@ -21,15 +21,7 @@
             <a href="register">Sign Up</a> &nbsp; &nbsp; &nbsp;
              <a href="showQuiz">Quiz</a> &nbsp; &nbsp; &nbsp;
         </nav>
-        <article class="main">
-           <form method="get" action="springWebApp">
-               <p>Question 1</p>
-               <input type="checkbox" value="answear 1" id="quiz-question" />Answear 1<br/>
-               <input type="checkbox" value="answear 1" id="quiz-question" />Answear 1<br/>
-               <input type="checkbox" value="answear 1" id="quiz-question" />Answear 1<br/>
-               <input type="submit" value="Submit" />
-           </form>
-        </article>
+        
          <footer>
              &copy; 2018 Stefanini Quiz Project &nbsp;<span class="separator">|</span>Desgnied by Virlan Petru
         </footer>       
