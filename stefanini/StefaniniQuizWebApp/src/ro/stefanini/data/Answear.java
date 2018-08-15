@@ -6,6 +6,9 @@ public class Answear {
 	private String contentAnswear;
 	private Boolean truthValue;
 	
+	public Answear() {
+	}
+	
 	public Answear(Integer aid, Integer qid, String answearContent, Boolean truthValue) {
 		this.id = aid;
 		this.questionId = qid;

@@ -5,7 +5,7 @@ public class Question {
 	private Integer id;
 	private String questionContent;
 	private Integer countCorrectAnswear;
-	List<Answear> answears;
+	private List<Answear> answears;
 	
 	public Integer getCountCorrectAnswear() {
 		return countCorrectAnswear;
@@ -13,6 +13,9 @@ public class Question {
 
 	public void setCountCorrectAnswear(Integer countCorrectAnswear) {
 		this.countCorrectAnswear = countCorrectAnswear;
+	}
+	
+	public Question() {
 	}
 
 	public Question(Integer id, String questionContent, List<Answear> answears) {
@@ -54,4 +57,7 @@ public class Question {
 		return answears;
 	}
 	
+	public void setAnswers(List<Answear> answears) {
+		this.answears = answears;
+	}
 }
