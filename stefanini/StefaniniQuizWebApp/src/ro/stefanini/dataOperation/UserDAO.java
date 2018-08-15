@@ -22,7 +22,7 @@ public class UserDAO {
 		con = DatabaseConnectionFactory.createConnection();
 		preparedStatement = null;
 		try {
-			preparedStatement = con.prepareStatement("insert into Users (username, password, name, surname, email) values (?,?,?,?,?)");
+			preparedStatement = con.prepareStatement("insert into UserAccount (username, password, name, surename, email) values (?,?,?,?,?)");
 			preparedStatement.setString(1, user.getUsername()); 
 			preparedStatement.setString(2, user.getPassword()); 
 			preparedStatement.setString(3, user.getName()); 
@@ -51,7 +51,7 @@ public class UserDAO {
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
-			preparedStatement = con.prepareStatement("SELECT * FROM Users WHERE name=? AND password = ?");
+			preparedStatement = con.prepareStatement("SELECT * FROM UserAccount WHERE name=? AND password = ?");
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, password);
 			usersRs = preparedStatement.executeQuery();
@@ -75,7 +75,7 @@ public class UserDAO {
 		try {
 			con = DatabaseConnectionFactory.createConnection();
 			con.setAutoCommit(false);
-			preparedStatement = con.prepareStatement("SELECT * FROM Users WHERE user_id=?");
+			preparedStatement = con.prepareStatement("SELECT * FROM UserAccount WHERE user_id=?");
 			preparedStatement.setInt(1, id);
 			usersRs = preparedStatement.executeQuery();
 			user = createUsers(usersRs).get(0);
@@ -97,7 +97,7 @@ public class UserDAO {
 			String username = rs.getString("username");
 			String password = rs.getString("password");
 			String name = rs.getString("name");
-			String surname = rs.getString("surname");
+			String surname = rs.getString("surename");
 			String email = rs.getString("email");
 			Integer scor = rs.getInt("scor");
 			users.add(new User(userId,username,password,name,surname,email,scor));
